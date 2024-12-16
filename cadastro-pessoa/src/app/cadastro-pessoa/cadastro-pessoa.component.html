@@ -1,0 +1,55 @@
+<div class="container">
+    <h2>Cadastro</h2>
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <app-input-cpf></app-input-cpf>
+      </div>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" formControlName="nome" class="form-control" placeholder="Digite seu nome">
+        <small *ngIf="cadastroForm.get('nome')?.invalid && cadastroForm.get('nome')?.touched" class="text-danger">
+          Nome é obrigatório e deve ter pelo menos 3 caracteres.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="dataNascimento">Data de Nascimento</label>
+        <input id="dataNascimento" type="date" formControlName="dataNascimento" class="form-control">
+        <small *ngIf="cadastroForm.get('dataNascimento')?.invalid && cadastroForm.get('dataNascimento')?.touched" class="text-danger">
+          Data de nascimento é obrigatória.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="genero">Gênero</label>
+        <select id="genero" formControlName="genero" class="form-control">
+          <option value="">Selecione</option>
+          <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+        </select>
+        <small *ngIf="cadastroForm.get('genero')?.invalid && cadastroForm.get('genero')?.touched" class="text-danger">
+          Gênero é obrigatório.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="estadoCivil">Estado Civil</label>
+        <select id="estadoCivil" formControlName="estadoCivil" class="form-control">
+          <option value="">Selecione</option>
+          <option *ngFor="let estado of estadosCivis" [value]="estado">{{ estado }}</option>
+        </select>
+        <small *ngIf="cadastroForm.get('estadoCivil')?.invalid && cadastroForm.get('estadoCivil')?.touched" class="text-danger">
+          Estado civil é obrigatório.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" class="form-control" placeholder="Digite seu email">
+        <small *ngIf="cadastroForm.get('email')?.invalid && cadastroForm.get('email')?.touched" class="text-danger">
+          Insira um email válido.
+        </small>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="cadastroForm.invalid">Cadastrar</button>
+    </form>
+  </div>

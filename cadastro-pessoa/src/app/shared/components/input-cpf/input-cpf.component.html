@@ -1,0 +1,18 @@
+<div class="cpf-container">
+    <form [formGroup]="cpfForm" >
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input id="cpf" type="text" formControlName="cpf" class="form-control" placeholder="Digite seu CPF">
+        <small *ngIf="cpfForm.get('cpf')?.hasError('required') && cpfForm.get('cpf')?.touched" class="text-danger">
+          CPF é obrigatório.
+        </small>
+        <small   class="text-sucess" *ngIf="cpfForm.get('cpf')?.valid && cpfForm.get('cpf')?.touched " >
+            CPF válido.
+          </small>
+        <small *ngIf=" !cpfForm.get('cpf')?.valid && cpfForm.get('cpf')?.hasError('invalidCpf') " class="text-danger">
+          CPF inválido.
+        </small> 
+       
+      </div>
+    </form>
+  </div>

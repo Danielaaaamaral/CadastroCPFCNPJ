@@ -1,0 +1,50 @@
+<div class="container">
+    <h2>Cadastro de Empresa</h2> 
+    <form [formGroup]="cadastroCnpjForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="cnpj">CNPJ</label>
+        <input id="cnpj" type="text" formControlName="cnpj" class="form-control" placeholder="Digite o CNPJ">
+        <small *ngIf="cadastroCnpjForm.get('cnpj')?.valid && cadastroCnpjForm.get('cnpj')?.touched" class="text-sucess">
+            CNPJ válido.
+          </small>
+        <small *ngIf="cadastroCnpjForm.get('cnpj')?.hasError('required') && cadastroCnpjForm.get('cnpj')?.touched" class="text-danger">
+          CNPJ é obrigatório.
+        </small>
+        <small *ngIf="!cadastroCnpjForm.get('cnpj')?.valid &&  cadastroCnpjForm.get('cnpj')?.hasError('invalidCnpj')" class="text-danger">
+          CNPJ inválido.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="razaoSocial">Razão Social</label>
+        <input id="razaoSocial" type="text" formControlName="razaoSocial" class="form-control" placeholder="Digite a Razão Social">
+        <small *ngIf="cadastroCnpjForm.get('razaoSocial')?.invalid && cadastroCnpjForm.get('razaoSocial')?.touched" class="text-danger">
+          Razão Social é obrigatória e deve ter pelo menos 3 caracteres.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="dataFundacao">Data de Fundação</label>
+        <input id="dataFundacao" type="date" formControlName="dataFundacao" class="form-control">
+        <small *ngIf="cadastroCnpjForm.get('dataFundacao')?.invalid && cadastroCnpjForm.get('dataFundacao')?.touched" class="text-danger">
+          Data de Fundação é obrigatória.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="nomeFantasia">Nome Fantasia</label>
+        <input id="nomeFantasia" type="text" formControlName="nomeFantasia" class="form-control" placeholder="Digite o Nome Fantasia">
+        <small *ngIf="cadastroCnpjForm.get('nomeFantasia')?.invalid && cadastroCnpjForm.get('nomeFantasia')?.touched" class="text-danger">
+          Nome Fantasia é obrigatório e deve ter pelo menos 3 caracteres.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="atividadeDesenvolvida">Atividade Desenvolvida</label>
+        <input id="atividadeDesenvolvida" type="text" formControlName="atividadeDesenvolvida" class="form-control" placeholder="Digite a Atividade Desenvolvida">
+        <small *ngIf="cadastroCnpjForm.get('atividadeDesenvolvida')?.invalid && cadastroCnpjForm.get('atividadeDesenvolvida')?.touched" class="text-danger">
+          Atividade Desenvolvida é obrigatória.
+        </small>
+      </div>
+    </form>
+  </div>
