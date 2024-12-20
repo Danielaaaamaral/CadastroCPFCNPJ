@@ -1,0 +1,26 @@
+<div class="row ">
+    <div class="col-12">
+<div class="container">
+   <label for="tipoPessoa">Tipo Pessoa</label>
+    <div class="form-group">
+      <select id="tipoPessoa" name="tipoPessoa" class="form-control" (change)="changeFisicaJuridica()" >
+        <option value="" *ngIf='this.tipoPessoa == ""'>Selecione o tipo pessoa</option>
+        <option *ngFor="let tipo of tiposPessoas" [value]="tipo.valor">{{ tipo.descricao }}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row ">
+    <div class="col-12">
+    <div class="container">
+        <div class="row" *ngIf='this.tipoPessoa == "J"'> 
+            <app-cadastro-pessoa-juridica></app-cadastro-pessoa-juridica> 
+        </div>
+        <div class="row" *ngIf='this.tipoPessoa == "F"'> 
+            <app-cadastro-pessoa></app-cadastro-pessoa>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>

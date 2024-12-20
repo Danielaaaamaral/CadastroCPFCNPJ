@@ -1,20 +1,7 @@
 <div class="container">
-    <h2>Cadastro de Empresa</h2> 
+    <h2>Cadastro Pessoa Juridíca</h2> 
     <form [formGroup]="cadastroCnpjForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="cnpj">CNPJ</label>
-        <input id="cnpj" type="text" formControlName="cnpj" class="form-control" placeholder="Digite o CNPJ">
-        <small *ngIf="cadastroCnpjForm.get('cnpj')?.valid && cadastroCnpjForm.get('cnpj')?.touched" class="text-sucess">
-            CNPJ válido.
-          </small>
-        <small *ngIf="cadastroCnpjForm.get('cnpj')?.hasError('required') && cadastroCnpjForm.get('cnpj')?.touched" class="text-danger">
-          CNPJ é obrigatório.
-        </small>
-        <small *ngIf="!cadastroCnpjForm.get('cnpj')?.valid &&  cadastroCnpjForm.get('cnpj')?.hasError('invalidCnpj')" class="text-danger">
-          CNPJ inválido.
-        </small>
-      </div>
-  
+    <app-input-cnpj></app-input-cnpj>
       <div class="form-group">
         <label for="razaoSocial">Razão Social</label>
         <input id="razaoSocial" type="text" formControlName="razaoSocial" class="form-control" placeholder="Digite a Razão Social">
@@ -45,6 +32,11 @@
         <small *ngIf="cadastroCnpjForm.get('atividadeDesenvolvida')?.invalid && cadastroCnpjForm.get('atividadeDesenvolvida')?.touched" class="text-danger">
           Atividade Desenvolvida é obrigatória.
         </small>
+      </div>
+      <div class="col-6">
+        <div class="text-box-btn-salvar">
+          <a href="#" class="btn btn-green btn-animate">Salvar</a>
+      </div>
       </div>
     </form>
   </div>

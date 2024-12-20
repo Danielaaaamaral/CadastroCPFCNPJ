@@ -9,6 +9,7 @@ import { MenuComponent } from './shared/components/menu/menu.component';
 import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.component';
 import { InputCpfComponent } from './shared/components/input-cpf/input-cpf.component';
 import { CadastroPessoaJuridicaComponent } from './cadastro-pessoa-juridica/cadastro-pessoa-juridica.component';
+import { InputCnpjComponent } from './shared/components/input-cnpj/input-cnpj.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CadastroPessoaJuridicaComponent } from './cadastro-pessoa-juridica/cada
     MenuComponent,
     CadastroPessoaComponent,
     InputCpfComponent,
-    CadastroPessoaJuridicaComponent
+    CadastroPessoaJuridicaComponent,
+    InputCnpjComponent
   ],
   imports: [
     BrowserModule,

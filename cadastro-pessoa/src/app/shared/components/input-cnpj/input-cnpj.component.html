@@ -1,0 +1,27 @@
+<div class="cnpj-container">
+    <form [formGroup]="cnpjForm">
+      <div class="form-group">
+        <label for="cnpj">CNPJ</label>
+  
+        <!-- Campo de entrada -->
+        <input
+          id="cnpj"
+          type="text"
+          formControlName="cnpj"
+          class="form-control"
+          placeholder="Digite o CNPJ"
+        />
+  
+        <!-- Mensagem de erro para CNPJ inválido -->
+        <small *ngIf="!cnpjForm.get('cnpj')?.valid &&  cnpjForm.get('cnpj')?.hasError('invalidCnpj')" class="text-danger">
+            CNPJ inválido.
+          </small>
+  
+        <!-- Mensagem de sucesso quando o CNPJ é válido -->
+        <small *ngIf="cnpjForm.get('cnpj')?.valid && cnpjForm.get('cnpj')?.touched" class="text-success">
+          CNPJ válido!
+        </small>
+      </div>
+    </form>
+  </div>
+  
