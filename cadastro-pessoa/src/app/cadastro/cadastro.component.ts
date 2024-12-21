@@ -15,7 +15,7 @@ export class CadastroComponent {
   // readonly form: FormGroup;
   public tiposPessoas!: TiposPessoaResponse[];
 
-  public tipoPessoa: string = "F";
+  public tipoPessoa: string = "";
 
   constructor(private readonly formBuilder: FormBuilder) {
     // this.tipoPessoaForm = this.formBuilder.group({
@@ -99,6 +99,7 @@ export class CadastroComponent {
     // }
   
     public changeFisicaJuridica() {
+      this.tipoPessoa = this.tipoPessoa == "F" ?"J":"F";
 console.log(this.tipoPessoa);
     }
 }

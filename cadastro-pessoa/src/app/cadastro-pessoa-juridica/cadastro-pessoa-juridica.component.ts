@@ -23,6 +23,7 @@ export class CadastroPessoaJuridicaComponent {
 
   
   onSubmit() {
+    debugger;
     if (this.cadastroCnpjForm.valid) {
       console.log('Dados do Cadastro:', this.cadastroCnpjForm.value);
       alert('Cadastro realizado com sucesso!');
