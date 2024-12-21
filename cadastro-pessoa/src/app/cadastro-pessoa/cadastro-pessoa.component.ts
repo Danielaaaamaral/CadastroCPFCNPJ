@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CadastroPessoaService } from './cadastro-pessoa.service';
 
 @Component({
   selector: 'app-cadastro-pessoa',
@@ -14,7 +15,7 @@ export class CadastroPessoaComponent {
   generos = ['Masculino', 'Feminino', 'Outro'];
   estadosCivis = ['Solteiro(a)', 'Casado(a)', 'Divorciado(a)', 'Viúvo(a)'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private pessoaFisicaService: CadastroPessoaService) {
     this.cadastroForm = this.fb.group({
       cpf: ['', [Validators.required, Validators.pattern(/^\d{11}$/)]],
       nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -25,6 +26,44 @@ export class CadastroPessoaComponent {
     });
   }
 
+  listarPessoas(): void {
+    this.pessoaFisicaService.listar().subscribe({
+      next: (res: any) => (this.pessoas = res),
+      error: (err: any) => console.error('Erro ao listar pessoas juridícas', err),
+    });
+  }
+
+  criarPessoa(): void {
+    this.pessoaFisicaService.criar(this.cadastroForm).subscribe({
+      next: (res: any) => {
+        console.log('Pessoa criada com sucesso!', res);
+        this.listarPessoas();
+      },
+      error: (err: any) => console.error('Erro ao criar pessoa juridíca', err),
+    });
+  }
+
+
+  atualizarPessoa(id: number): void {
+    this.pessoaFisicaService.atualizar(id, this.cadastroForm).subscribe({
+      next: (res: any) => {
+        console.log('Pessoa atualizada com sucesso!', res);
+        this.listarPessoas();
+      },
+      error: (err: any) => console.error('Erro ao atualizar pessoa juridíca', err),
+    });
+  }
+
+  excluirPessoa(id: number): void {
+    this.pessoaFisicaService.excluir(id).subscribe({
+      next: () => {
+        console.log('Pessoa excluída com sucesso!');
+        this.listarPessoas();
+      },
+      error: (err: any) => console.error('Erro ao excluir pessoa juridíca', err),
+    });
+  }
+  
   onSubmit() {
     if (this.cadastroForm.valid) {
       console.log('Dados do Formulário:', this.cadastroForm.value);
