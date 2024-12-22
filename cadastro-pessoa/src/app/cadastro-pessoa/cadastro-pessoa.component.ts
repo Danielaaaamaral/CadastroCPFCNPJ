@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CadastroPessoaService } from './cadastro-pessoa.service';
+import PessoaFisica from '../shared/models/PessoaFisica.model';
 
 @Component({
   selector: 'app-cadastro-pessoa',
@@ -11,6 +12,8 @@ import { CadastroPessoaService } from './cadastro-pessoa.service';
 })
 export class CadastroPessoaComponent {
   cadastroForm: FormGroup;
+ pessoa: PessoaFisica;
+ pessoas: PessoaFisica[]=[];
 
   generos = ['Masculino', 'Feminino', 'Outro'];
   estadosCivis = ['Solteiro(a)', 'Casado(a)', 'Divorciado(a)', 'Viúvo(a)'];
@@ -24,6 +27,15 @@ export class CadastroPessoaComponent {
       estadoCivil: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
+    this.pessoa={
+      cpf:this.cadastroForm.controls["cpf"].value,
+      nome:this.cadastroForm.controls["nome"].value,
+      dataNascimento:this.cadastroForm.controls["dataNascimento"].value,
+      genero:this.cadastroForm.controls["genero"].value,
+    estadoCivil:this.cadastroForm.controls["estadoCivil"].value,
+    email:this.cadastroForm.controls["email"].value
+
+    }
   }
 
   listarPessoas(): void {
@@ -34,7 +46,7 @@ export class CadastroPessoaComponent {
   }
 
   criarPessoa(): void {
-    this.pessoaFisicaService.criar(this.cadastroForm).subscribe({
+    this.pessoaFisicaService.criar(this.pessoa).subscribe({
       next: (res: any) => {
         console.log('Pessoa criada com sucesso!', res);
         this.listarPessoas();
@@ -45,7 +57,7 @@ export class CadastroPessoaComponent {
 
 
   atualizarPessoa(id: number): void {
-    this.pessoaFisicaService.atualizar(id, this.cadastroForm).subscribe({
+    this.pessoaFisicaService.atualizar(id, this.pessoa).subscribe({
       next: (res: any) => {
         console.log('Pessoa atualizada com sucesso!', res);
         this.listarPessoas();

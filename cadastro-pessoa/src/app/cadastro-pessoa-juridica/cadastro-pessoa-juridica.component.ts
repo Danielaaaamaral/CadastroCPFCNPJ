@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CadastroPessoaJuridicaService, PessoaJuridica } from './cadastro-pessoa-juridica.service';
+import { CadastroPessoaJuridicaService} from './cadastro-pessoa-juridica.service';
+import PessoaJuridica from '../shared/models/PessoaJuridica.model';
 
 @Component({
   selector: 'app-cadastro-pessoa-juridica',
@@ -11,11 +12,12 @@ import { CadastroPessoaJuridicaService, PessoaJuridica } from './cadastro-pessoa
 })
 export class CadastroPessoaJuridicaComponent {
   cadastroCnpjForm: FormGroup;
-  pessoa: PessoaJuridica | undefined;
-  pessoas: any;
+  pessoa: PessoaJuridica ;
+  pessoas: PessoaJuridica[]=[];
 
 
   constructor(private fb: FormBuilder,private pessoaJuridicaService : CadastroPessoaJuridicaService) {
+
     
     this.cadastroCnpjForm = this.fb.group({
       cnpj: ['', [Validators.required, Validators.pattern(/^\d{14}$/)]],
@@ -24,7 +26,13 @@ export class CadastroPessoaJuridicaComponent {
       nomeFantasia: ['', [Validators.required, Validators.minLength(3)]],
       atividadeDesenvolvida: ['', Validators.required]
     });
-  
+    this.pessoa = {
+    cnpj: this.cadastroCnpjForm.controls["cnpj"].value,
+    razaoSocial:this.cadastroCnpjForm.controls["razaoSocial"].value,
+    dataFundacao:this.cadastroCnpjForm.controls["dataFundacao"].value,
+    nomeFantasia:this.cadastroCnpjForm.controls["nomeFantasia"].value,
+    atividadeDesenvolvida:this.cadastroCnpjForm.controls["atividadeDesenvolvida"].value
+    };
   }
 
   listarPessoas(): void {

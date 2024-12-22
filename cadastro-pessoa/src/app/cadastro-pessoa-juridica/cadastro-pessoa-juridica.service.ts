@@ -2,19 +2,14 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
+import PessoaJuridica from "../shared/models/PessoaJuridica.model";
 
 
 @Injectable({
     providedIn: 'root'
   })
 
-  export interface PessoaJuridica{
-    cnpj: string;
-    razaoSocial: string;
-    dataFundacao: string; 
-    nomeFantasia:string;
-    atividadeDesenvolvida:string
-  }
+
 
   export class CadastroPessoaJuridicaService{
     constructor(private readonly http: HttpClient) { 

@@ -2,18 +2,14 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
+import PessoaFisica from "../shared/models/PessoaFisica.model";
 
 
 @Injectable({
     providedIn: 'root'
   })
 
-  export interface PessoaFisica {
-    id?: number; // ID opcional para criação
-    nome: string;
-    cpf: string;
-    dataNascimento: string; // Formato ISO (YYYY-MM-DD)
-  }
+
   export class CadastroPessoaService{
     constructor(private readonly http: HttpClient) { 
         }

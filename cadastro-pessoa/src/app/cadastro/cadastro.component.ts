@@ -4,6 +4,7 @@ import TiposPessoaResponse from '../shared/models/TiposPessoaResponse';
 
 
 
+
 @Component({
   selector: 'app-cadastro',
   standalone: false,
@@ -14,9 +15,8 @@ import TiposPessoaResponse from '../shared/models/TiposPessoaResponse';
 export class CadastroComponent {
   // readonly form: FormGroup;
   public tiposPessoas!: TiposPessoaResponse[];
-
   public tipoPessoa: string = "";
-
+ 
   constructor(private readonly formBuilder: FormBuilder) {
     // this.tipoPessoaForm = this.formBuilder.group({
     //   tipoPessoa: ['', Validators.required]
