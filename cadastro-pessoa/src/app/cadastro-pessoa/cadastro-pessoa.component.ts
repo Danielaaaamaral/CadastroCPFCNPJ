@@ -11,7 +11,7 @@ import PessoaFisica from '../shared/models/PessoaFisica.model';
   styleUrl: './cadastro-pessoa.component.css'
 })
 export class CadastroPessoaComponent {
-  cadastroForm: FormGroup;
+cadastroForm: FormGroup;
  pessoa: PessoaFisica;
  pessoas: PessoaFisica[]=[];
 

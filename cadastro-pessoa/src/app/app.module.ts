@@ -10,6 +10,8 @@ import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.compo
 import { InputCpfComponent } from './shared/components/input-cpf/input-cpf.component';
 import { CadastroPessoaJuridicaComponent } from './cadastro-pessoa-juridica/cadastro-pessoa-juridica.component';
 import { InputCnpjComponent } from './shared/components/input-cnpj/input-cnpj.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -25,8 +27,8 @@ import { InputCnpjComponent } from './shared/components/input-cnpj/input-cnpj.co
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })

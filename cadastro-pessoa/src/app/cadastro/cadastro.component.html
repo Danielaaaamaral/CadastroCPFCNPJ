@@ -4,7 +4,6 @@
    <label for="tipoPessoa">Tipo Pessoa</label>
     <div class="form-group">
       <select id="tipoPessoa" name="tipoPessoa" class="form-control" (change)="changeFisicaJuridica()" >
-        <option value="" *ngIf='this.tipoPessoa == ""'>Selecione o tipo pessoa</option>
         <option *ngFor="let tipo of tiposPessoas" [value]="tipo.valor">{{ tipo.descricao }}</option>
       </select>
     </div>
@@ -22,5 +21,4 @@
     </div>
 </div>
 </div>
-
 </div>

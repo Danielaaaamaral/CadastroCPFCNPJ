@@ -1,7 +1,7 @@
 <div class="container">
     <h2>Cadastro Pessoa Juridíca</h2> 
     <form [formGroup]="cadastroCnpjForm" (ngSubmit)="onSubmit()">
-    <app-input-cnpj id="cnpj" name="cnpj" mask="00.000.000/0000-00" formControlName="cnpj"></app-input-cnpj>
+    <app-input-cnpj ></app-input-cnpj>
       <div class="form-group">
         <label for="razaoSocial">Razão Social</label>
         <input id="razaoSocial" type="text" formControlName="razaoSocial" class="form-control" placeholder="Digite a Razão Social">

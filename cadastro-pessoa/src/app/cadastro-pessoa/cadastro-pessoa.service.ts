@@ -14,7 +14,7 @@ import PessoaFisica from "../shared/models/PessoaFisica.model";
     constructor(private readonly http: HttpClient) { 
         }
 
-    criar(pessoa: PessoaFisica): Observable<PessoaFisica> {
+    criar(pessoa: any): Observable<PessoaFisica> {
             return this.http.post<PessoaFisica>(`${environment.linkApi}fisica`, pessoa);
           }
     listar(): Observable<PessoaFisica[]> {
@@ -24,7 +24,7 @@ import PessoaFisica from "../shared/models/PessoaFisica.model";
             const url = `${environment.linkApi}fisica/${id}`;
             return this.http.get<PessoaFisica>(url);
           }
-    atualizar(id: number, pessoa: PessoaFisica): Observable<PessoaFisica> {
+    atualizar(id: number, pessoa: any): Observable<PessoaFisica> {
             const url = `${environment.linkApi}fisica/${id}`;
             return this.http.put<PessoaFisica>(url, pessoa);
           }

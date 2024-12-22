@@ -16,9 +16,8 @@ export class CadastroPessoaJuridicaComponent {
   pessoas: PessoaJuridica[]=[];
 
 
-  constructor(private fb: FormBuilder,private pessoaJuridicaService : CadastroPessoaJuridicaService) {
-
-    
+  constructor(private fb: FormBuilder,
+    private readonly pessoaJuridicaService : CadastroPessoaJuridicaService) {
     this.cadastroCnpjForm = this.fb.group({
       cnpj: ['', [Validators.required, Validators.pattern(/^\d{14}$/)]],
       razaoSocial: ['', [Validators.required, Validators.minLength(3)]],
@@ -75,9 +74,8 @@ export class CadastroPessoaJuridicaComponent {
   }
   
   onSubmit() {
-    debugger;
     if (this.cadastroCnpjForm.valid) {
-      console.log('Dados do Cadastro:', this.cadastroCnpjForm.value);
+      this.criarPessoa();
       alert('Cadastro realizado com sucesso!');
       this.cadastroCnpjForm.reset();
     } else {

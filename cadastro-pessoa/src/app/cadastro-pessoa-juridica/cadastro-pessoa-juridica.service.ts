@@ -8,14 +8,11 @@ import PessoaJuridica from "../shared/models/PessoaJuridica.model";
 @Injectable({
     providedIn: 'root'
   })
-
-
-
   export class CadastroPessoaJuridicaService{
     constructor(private readonly http: HttpClient) { 
         }
 
-    criar(pessoa: PessoaJuridica): Observable<PessoaJuridica> {
+    criar(pessoa: any): Observable<PessoaJuridica> {
             return this.http.post<PessoaJuridica>(`${environment.linkApi}juridica`, pessoa);
           }
     listar(): Observable<PessoaJuridica[]> {
@@ -25,7 +22,7 @@ import PessoaJuridica from "../shared/models/PessoaJuridica.model";
             const url = `${environment.linkApi}juridica/${id}`;
             return this.http.get<PessoaJuridica>(url);
           }
-    atualizar(id: number, pessoa: PessoaJuridica): Observable<PessoaJuridica> {
+    atualizar(id: number, pessoa: any): Observable<PessoaJuridica> {
             const url = `${environment.linkApi}juridica/${id}`;
             return this.http.put<PessoaJuridica>(url, pessoa);
           }
